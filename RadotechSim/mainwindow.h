@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+class Page;
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -15,7 +17,12 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void setPage(Page* page);
+    void back();
+
 private:
     Ui::MainWindow *ui;
+
+    Page* page = nullptr;
 };
 #endif // MAINWINDOW_H

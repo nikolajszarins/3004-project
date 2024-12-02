@@ -10,13 +10,20 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    pageprofileedit.cpp \
+    pageprofileselect.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    page.h \
+    pageprofileedit.h \
+    pageprofileselect.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    pageprofileedit.ui \
+    pageprofileselect.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
