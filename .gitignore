@@ -1,2 +1,3 @@
-
 RadotechSim/RadotechSim.pro.user
+build-RadotechSim-local-Debug/*
+*.DS_Store
