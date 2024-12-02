@@ -114,7 +114,7 @@
     <string>Weight (kg)</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="buttonFinish">
    <property name="geometry">
     <rect>
      <x>60</x>
