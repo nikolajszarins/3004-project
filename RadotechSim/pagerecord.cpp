@@ -2,7 +2,7 @@
 #include "ui_pagerecord.h"
 
 PageRecord::PageRecord(MainWindow *mainWindow, Page *parentMenu, QWidget *parent) :
-    QWidget(parent),
+    Page(parent),
     ui(new Ui::PageRecord)
 {
     ui->setupUi(this);

@@ -8,7 +8,7 @@ namespace Ui {
 class PageProfileSelect;
 }
 
-class PageProfileSelect : public QWidget, public Page
+class PageProfileSelect : public Page
 {
     Q_OBJECT
 
@@ -16,12 +16,10 @@ public:
     explicit PageProfileSelect(MainWindow *mainWindow, QWidget *parent = nullptr);
     ~PageProfileSelect();
 
-    QWidget *getWidget() { return this; }
-    void update() {}
-
 private:
     Ui::PageProfileSelect *ui;
 
+    void useProfile();
     void editProfile();
 };
 

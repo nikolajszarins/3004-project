@@ -8,7 +8,7 @@ namespace Ui {
 class PageTakeReading;
 }
 
-class PageTakeReading : public QWidget, public Page
+class PageTakeReading : public Page
 {
     Q_OBJECT
 
@@ -16,11 +16,12 @@ public:
     explicit PageTakeReading(MainWindow *mainWindow, Page *parentMenu, QWidget *parent = nullptr);
     ~PageTakeReading();
 
-    QWidget *getWidget() { return this; }
-    void update() {}
+    void deviceSignal();
 
 private:
     Ui::PageTakeReading *ui;
+
+    void goToResults();
 };
 
 #endif // PAGETAKEREADING_H

@@ -8,7 +8,7 @@ namespace Ui {
 class PageRecordList;
 }
 
-class PageRecordList : public QWidget, public Page
+class PageRecordList : public Page
 {
     Q_OBJECT
 
@@ -16,11 +16,10 @@ public:
     explicit PageRecordList(MainWindow *mainWindow, Page *parentMenu, QWidget *parent = nullptr);
     ~PageRecordList();
 
-    QWidget *getWidget() { return this; }
-    void update() {}
-
 private:
     Ui::PageRecordList *ui;
+
+    void newRecord();
 };
 
 #endif // PAGERECORDLIST_H

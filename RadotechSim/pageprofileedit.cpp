@@ -4,7 +4,7 @@
 #include "mainwindow.h"
 
 PageProfileEdit::PageProfileEdit(MainWindow *mainWindow, Page *parentMenu, QWidget *parent) :
-    QWidget(parent),
+    Page(parent),
     ui(new Ui::PageProfileEdit)
 {
     ui->setupUi(this);

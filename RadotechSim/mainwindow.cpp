@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     connect(ui->buttonBack, &QPushButton::released, this, &MainWindow::back);
+    connect(ui->buttonApply, &QPushButton::released, this, &MainWindow::deviceSignal);
 
     setPage(new PageProfileSelect(this));
 }
@@ -21,22 +22,29 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::setPage(Page* page) {
+void MainWindow::setPage(Page *page) {
     if (this->page != nullptr) {
-        this->page->getWidget()->hide();
+        this->page->hide();
     }
     this->page = page;
     page->update();
-    ui->appWidget->layout()->addWidget(page->getWidget());
-    page->getWidget()->show();
+    ui->appWidget->layout()->addWidget(page);
+    page->show();
     ui->appTitle->setText(page->title);
     ui->buttonBack->setEnabled(page->parent != nullptr);
 }
 
 void MainWindow::back() {
+    if (page == nullptr) return;
     if (page->parent == nullptr) return;
 
-    Page* old = page;
+    Page *old = page;
     setPage(old->parent);
     delete old;
+}
+
+void MainWindow::deviceSignal() {
+    if (page == nullptr) return;
+
+    page->deviceSignal();
 }

@@ -17,12 +17,14 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void setPage(Page* page);
+    void setPage(Page *page);
     void back();
 
 private:
     Ui::MainWindow *ui;
 
-    Page* page = nullptr;
+    Page *page = nullptr;
+
+    void deviceSignal();
 };
 #endif // MAINWINDOW_H

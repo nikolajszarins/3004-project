@@ -5,14 +5,16 @@
 
 class MainWindow;
 
-class Page {
+class Page : public QWidget {
 public:
     QString title;
-    Page* parent;
+    Page *parent;
+
+    explicit Page(QWidget *parent) : QWidget(parent) {}
 
     virtual ~Page() = default;
-    virtual QWidget *getWidget() = 0;
-    virtual void update() = 0;
+    virtual void update() {}
+    virtual void deviceSignal() {}
 
 protected:
     MainWindow *mainWindow;
