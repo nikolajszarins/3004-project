@@ -12,18 +12,27 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     pageprofileedit.cpp \
-    pageprofileselect.cpp
+    pageprofileselect.cpp \
+    pagerecord.cpp \
+    pagerecordlist.cpp \
+    pagetakereading.cpp
 
 HEADERS += \
     mainwindow.h \
     page.h \
     pageprofileedit.h \
-    pageprofileselect.h
+    pageprofileselect.h \
+    pagerecord.h \
+    pagerecordlist.h \
+    pagetakereading.h
 
 FORMS += \
     mainwindow.ui \
     pageprofileedit.ui \
-    pageprofileselect.ui
+    pageprofileselect.ui \
+    pagerecord.ui \
+    pagerecordlist.ui \
+    pagetakereading.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
