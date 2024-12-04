@@ -1,4 +1,4 @@
-#include "Record.h"
+#include "record.h"
 
 Record::Record() {
 	for (int i =0; i < 24; ++i) {

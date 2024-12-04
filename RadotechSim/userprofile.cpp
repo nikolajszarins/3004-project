@@ -1,4 +1,4 @@
-#include "UserProfile.h"
+#include "userprofile.h"
 
 UserProfile::UserProfile(int id, QString n, int a, int h, int w, QListView* r) {
 	this->id = id;

@@ -15,7 +15,10 @@ SOURCES += \
     pageprofileselect.cpp \
     pagerecord.cpp \
     pagerecordlist.cpp \
-    pagetakereading.cpp
+    pagetakereading.cpp \
+    radotech.cpp \
+    record.cpp \
+    userprofile.cpp
 
 HEADERS += \
     mainwindow.h \
@@ -24,7 +27,10 @@ HEADERS += \
     pageprofileselect.h \
     pagerecord.h \
     pagerecordlist.h \
-    pagetakereading.h
+    pagetakereading.h \
+    radotech.h \
+    record.h \
+    userprofile.h
 
 FORMS += \
     mainwindow.ui \

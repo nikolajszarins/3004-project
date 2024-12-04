@@ -1,4 +1,4 @@
-#include "RadotechDevice.h"
+#include "radotech.h"
 
 RadotechDevice::RadotechDevice() {
 	this->battery = 100;
