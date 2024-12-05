@@ -25,6 +25,14 @@ QDateTime Record::getDate() const {
 	return date;
 }
 
+int Record::getId() const {
+    return id;
+}
+
+QString Record::toString() {
+    return "hi";
+}
+
 void Record::setDate(const QDateTime& newDate) {
 	date = newDate;
 }

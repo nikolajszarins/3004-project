@@ -5,6 +5,7 @@
 #include <QListView>
 #include <vector>
 #include "Record.h"
+#include <QStandardItemModel>
 
 /*
 	Purpose: Used to hold information relating to a user
