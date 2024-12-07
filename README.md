@@ -22,7 +22,7 @@ Breakdown of work:
 <br>
 
 Name: Nikolajs Zarins   
-Student Number:  
+Student Number: 101273615
 Breakdown of work: 
 - User Interface design and development
 - UML Class diagrams
