@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "userprofile.h"
 
 class Page;
 
@@ -24,6 +25,7 @@ private:
     Ui::MainWindow *ui;
 
     Page *page = nullptr;
+    UserProfile profiles[5];
 
     void deviceSignal();
 };

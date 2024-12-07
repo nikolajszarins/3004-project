@@ -2,9 +2,8 @@
 #define USERPROFILE_H
 
 #include <QString>
-#include <QListView>
-#include <vector>
-#include "Record.h"
+#include <QVector>
+#include "record.h"
 #include <QStandardItemModel>
 
 /*
@@ -31,10 +30,10 @@ class UserProfile {
 		int age;
 		int height;
 		int weight;
-		QListView* records;
+        QVector<Record> records;
 	
 	public:
-		UserProfile(int id, QString n, int a, int h, int w, QListView* r);
+        UserProfile(int id, QString n, int a, int h, int w);
 		~UserProfile();
 		
 		void addRecord(Record record);
@@ -45,13 +44,12 @@ class UserProfile {
 		int getAge();
 		int getHeight();
 		int getWeight();
-		QListView* getRecords();
+        QVector<Record>* getRecords();
 		
 		void setName(QString newName);
 		void setAge(int newAge);
 		void setHeight(int newHeight);
-		void setWeight(int newWeight);
-		void setRecords(QListView* newRecords);
+        void setWeight(int newWeight);
 };
 
 #endif
