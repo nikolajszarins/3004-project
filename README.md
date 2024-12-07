@@ -11,8 +11,8 @@ Breakdown of work:
 
 <br>
 
-Name: Ben Kyd  
-Student Number: 101167318
+Name: Ben Kyd   
+Student Number: 101167318   
 Breakdown of work: 
 - Classes implementation (include specific classes at end)
 - State Machine diagrams 
@@ -21,8 +21,8 @@ Breakdown of work:
 
 <br>
 
-Name: Nikolajs Zarins   
-Student Number: 101273615
+Name: Nikolajs Zarins  
+Student Number: 101273615   
 Breakdown of work: 
 - User Interface design and development
 - UML Class diagrams
@@ -32,7 +32,7 @@ Breakdown of work:
 <br>
 
 Name: Ilyes Mankour   
-Student Number:  
+Student Number: 101166398   
 Breakdown of work: 
 - Use Cases 
 - Sequence Diagrams 
