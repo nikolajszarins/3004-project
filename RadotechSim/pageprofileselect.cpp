@@ -1,7 +1,6 @@
 #include "pageprofileselect.h"
 #include "ui_pageprofileselect.h"
 
-#include "mainwindow.h"
 #include "pageprofileedit.h"
 #include "pagerecordlist.h"
 
@@ -15,8 +14,24 @@ PageProfileSelect::PageProfileSelect(MainWindow *mainWindow, QWidget *parent) :
     parent = nullptr;
     title = "Profile Select";
 
-    connect(ui->buttonProfile1, &QPushButton::released, this, &PageProfileSelect::useProfile);
-    connect(ui->buttonProfile2, &QPushButton::released, this, &PageProfileSelect::editProfile);
+    buttons[0] = ui->buttonProfile0;
+    buttons[1] = ui->buttonProfile1;
+    buttons[2] = ui->buttonProfile2;
+    buttons[3] = ui->buttonProfile3;
+    buttons[4] = ui->buttonProfile4;
+    names[0] = ui->nameProfile0;
+    names[1] = ui->nameProfile1;
+    names[2] = ui->nameProfile2;
+    names[3] = ui->nameProfile3;
+    names[4] = ui->nameProfile4;
+
+    for (int i = 0; i < NUM_PROFILES; i++) {
+        connect(buttons[i], &QPushButton::released, this, [this, i]() {
+            selectProfile(i);
+        });
+    }
+
+    update();
 }
 
 PageProfileSelect::~PageProfileSelect()
@@ -24,10 +39,23 @@ PageProfileSelect::~PageProfileSelect()
     delete ui;
 }
 
-void PageProfileSelect::useProfile() {
-    mainWindow->setPage(new PageRecordList(mainWindow, this));
+void PageProfileSelect::update() {
+    for (int i = 0; i < NUM_PROFILES; i++) {
+        UserProfile *profile = mainWindow->getProfile(i);
+        if (profile == nullptr) {
+            names[i]->setText("(empty)");
+            buttons[i]->setText("Create");
+        } else {
+            names[i]->setText(profile->getName());
+            buttons[i]->setText("Use");
+        }
+    }
 }
 
-void PageProfileSelect::editProfile() {
-    mainWindow->setPage(new PageProfileEdit(mainWindow, this));
+void PageProfileSelect::selectProfile(int idx) {
+    if (mainWindow->getProfile(idx) == nullptr) {
+        mainWindow->setPage(new PageProfileEdit(mainWindow, this));
+    } else {
+        mainWindow->setPage(new PageRecordList(mainWindow, this));
+    }
 }

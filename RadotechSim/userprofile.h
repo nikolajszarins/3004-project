@@ -37,7 +37,7 @@ class UserProfile {
 		~UserProfile();
 		
 		void addRecord(Record record);
-		void deleteRecord(Record record);	
+        void deleteRecord(int idx);
 		
 		int getId();
 		QString getName();

@@ -14,6 +14,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->buttonBack, &QPushButton::released, this, &MainWindow::back);
     connect(ui->buttonApply, &QPushButton::released, this, &MainWindow::deviceSignal);
 
+    for (int i = 0; i < NUM_PROFILES; i++) {
+        profiles[i] = nullptr;
+    }
+
     setPage(new PageProfileSelect(this));
 }
 
@@ -47,4 +51,10 @@ void MainWindow::deviceSignal() {
     if (page == nullptr) return;
 
     page->deviceSignal();
+}
+
+UserProfile *MainWindow::getProfile(int idx) {
+    if (idx < 0 || idx >= NUM_PROFILES)
+        return nullptr;
+    return profiles[idx];
 }

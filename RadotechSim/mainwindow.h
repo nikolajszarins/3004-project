@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include "userprofile.h"
 
+#define NUM_PROFILES 5
+
 class Page;
 
 QT_BEGIN_NAMESPACE
@@ -21,11 +23,13 @@ public:
     void setPage(Page *page);
     void back();
 
+    UserProfile *getProfile(int idx);
+
 private:
     Ui::MainWindow *ui;
 
     Page *page = nullptr;
-    UserProfile profiles[5];
+    UserProfile *profiles[NUM_PROFILES];
 
     void deviceSignal();
 };
