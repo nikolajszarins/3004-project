@@ -38,7 +38,6 @@ MainWindow::MainWindow(QWidget *parent)
         qDebug() << sqlite3_errmsg(db);
         return;
     }
-    int index = 0;
 
     while (sqlite3_step(users) == SQLITE_ROW) {
         int id = sqlite3_column_int(users, 0);
@@ -48,8 +47,7 @@ MainWindow::MainWindow(QWidget *parent)
         double height = sqlite3_column_double(users, 4);
 
         QString userName = QString::fromUtf8(reinterpret_cast<const char*>(name));
-        profiles[index] = new UserProfile(id, userName, age, height, weight);
-        index++;
+        profiles[id-1] = new UserProfile(id, userName, age, height, weight);
     }
 
     connect(ui->buttonBack, &QPushButton::released, this, &MainWindow::back);
