@@ -236,37 +236,11 @@
      <number>150</number>
     </property>
    </widget>
-   <widget class="QPushButton" name="buttonRandomize">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>190</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Randomize</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="buttonAverage">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>190</y>
-      <width>111</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Set to Average</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="buttonApply">
     <property name="geometry">
      <rect>
       <x>320</x>
-      <y>230</y>
+      <y>200</y>
       <width>111</width>
       <height>31</height>
      </rect>

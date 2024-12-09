@@ -76,5 +76,6 @@ void PageTakeReading::goToResults() {
     Page *parent = Page::parent;
 
     mainWindow->back(); // This function call deletes this PageTakeReading -- careful!
-    mainWindow->setPage(new PageRecord(mainWindow, parent));
+    int recordId = mainWindow->getProfile(profileIdx)->getRecords()->size() - 1;
+    mainWindow->setPage(new PageRecord(profileIdx, recordId, mainWindow, parent));
 }

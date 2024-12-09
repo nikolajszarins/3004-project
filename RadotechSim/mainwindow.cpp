@@ -11,14 +11,14 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    for (int i = 0; i < NUM_PROFILES; i++) {
+        profiles[i] = nullptr;
+    }
+
     connect(ui->buttonBack, &QPushButton::released, this, &MainWindow::back);
     connect(ui->selBattery, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, &MainWindow::setDeviceBattery);
     connect(ui->selDeviceStatus, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &MainWindow::setDeviceStatus);
     connect(ui->buttonApply, &QPushButton::released, this, &MainWindow::touchToSkin);
-
-    for (int i = 0; i < NUM_PROFILES; i++) {
-        profiles[i] = nullptr;
-    }
 
     setPage(new PageProfileSelect(this));
 }
