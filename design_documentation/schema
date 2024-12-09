@@ -1,0 +1,163 @@
+CREATE TABLE IF NOT EXISTS users(
+id INTEGER PRIMARY KEY,
+name TEXT NOT NULL,
+age INTEGER NOT NULL,
+weight REAL NOT NULL,
+height REAL NOT NULL);
+
+CREATE TABLE IF NOT EXISTS records(
+id INTEGER NOT NULL,
+user_id INTEGER NOT NULL,
+date DATE NOT NULL,
+PRIMARY KEY (id, user_id),
+FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE);
+
+CREATE TABLE IF NOT EXISTS record_values(
+id INTEGER NOT NULL,
+record_id INTEGER NOT NULL,
+user_id INTEGER NOT NULL,
+value INTEGER NOT NULL,
+PRIMARY KEY (id, record_id, user_id),
+FOREIGN KEY (record_id, user_id) REFERENCES records (id, user_id) ON DELETE CASCADE);
+
+sqlite3* db;
+
+if (sqlite3_open("users.db", &db) != SQLITE_OK) {
+	std::cerr << sqlite3_errmsg(db) << std::endl;
+	// couldnt open the database
+}
+
+//TO GRAB ALL USERS:
+	
+sqlite3_stmt* users; // statement object
+const char* sql = "SELECT * FROM users;"; // query
+
+if (sqlite3_prepare_v2(db, sql, -1, &users, nullptr) != SQLITE_OK) {
+	std::cerr << sqlite3_errmsg(db) << std::endl;
+	// query error
+}
+
+while (sqlite3_step(users) == SQLITE_ROW) {
+	int id = sqlite3_column_int(users, 0);
+	const unsigned char* name = sqlite3_column_text(users, 1);
+	int age = sqlite3_column_int(users, 2);
+	double weight = sqlite3_column_double(users, 3);
+	double height = sqlite3_column_double(users, 4);
+	// create userprofile object and add it to list
+}
+
+sqlite3_finalize(users);
+
+//Grab records for a specific user
+
+int user_id; // assuming we have a user id to query for
+
+sqlite3_stmt* records; // statement objects
+
+const char* records_query = "SELECT id, date FROM records WHERE user_id = ?";
+
+sqlite3_bind_int(records, 1, user_id); // binds the user_id to the query parameter
+
+while (sqlite3_step(records) == SQLITE_ROW) {
+	int record_id = sqlite3_column_int(records, 0);
+	const unsigned char* date = sqlite3_column_text(records, 1);
+}
+
+sqlite3_finalize(records);
+
+
+//Grab record_values for a specific record of a specfic user
+
+// assuming we have id's ready
+int user_id; 
+int record_id;
+
+sqlite3_stmt* values;
+
+const char* values_query = 
+	"SELECT rv.id AS value_id, rv.value "
+	"FROM record_values rv "
+	"WHERE rv.record_id = ? AND rv.user_id = ?;";
+
+if (sqlite3_prepare_v2(db, values_query, -1, &values, nullptr) != SQLITE_OK) {
+	std::cerr << sqlite3_errmsg(db) << std::endl;
+	// insert record
+}
+	
+sqlite3_bind_int(values, 1, record_id); // assuming you have a record_id ready
+sqlite3_bind_int(values, 2, user_id);
+	
+while (sqlite3_step(values) == SQLITE_ROW) {
+	int value = sqlite3_column_int(values, 1);
+	// insert value
+}
+	
+sqlite3_finalize(values);
+
+
+//insert a user
+sqlite3_stmt* insert_user;
+sql = "INSERT INTO users (id, name, age, weight, height) VALUES (?, ?, ?, ?, ?);";
+	
+if (sqlite3_prepare_v2(db, sql, -1, &insert_user, nullptr) != SQLITE_OK) {
+	std::cerr << sqlite3_errmsg(db) << std::endl;
+}
+	
+sqlite3_bind_int(insert_user, 1, 1);
+sqlite3_bind_text(insert_user, 2, "Ben", -1, SQLITE_STATIC);
+sqlite3_bind_int(insert_user, 3, 23);
+sqlite3_bind_double(insert_user, 4, 81.64);
+sqlite3_bind_double(insert_user, 5, 187.96);
+	
+if (sqlite3_step(insert_user) != SQLITE_DONE) {
+	std::cerr << sqlite3_errmsg(db) << std::endl;
+} else {
+	std::cout << "User inserted.\n";
+}
+	
+sqlite3_finalize(insert_user);
+
+//insert a record
+
+sqlite3_stmt* insert_record;
+const char* sql = "INSERT INTO records (id, user_id, date) VALUES (?, ?, ?);";
+
+if (sqlite3_prepare_v2(db, sql, -1, &insert_record, nullptr) != SQLITE_OK) {
+	std::cerr << sqlite3_errmsg(db) << std::endl;
+}
+
+// assuming record_id, user_id, and date parameters
+sqlite3_bind_int(insert_record, 1, record_id);
+sqlite3_bind_int(insert_record, 2, user_id);
+sqlite3_bind_text(insert_record, 3, date.c_str(), -1, SQLITE_STATIC);
+
+sqlite3_step(insert_record);
+
+sqlite3_finalize(insert_record);
+
+
+//insert a record value
+
+sqlite3_stmt* record_value
+
+const char* sql = "INSERT INTO record_values (id, record_id, user_id, value) VALUES (?, ?, ?, ?);";
+
+if (sqlite3_prepare_v2(db, sql, -1, &record_value, nullptr) != SQLITE_OK) {
+	std:cerr << sqlite3_errmsg(db) << std::endl;
+}
+assuming value_id, record_id, user_id, value parameters
+sqlite3_bind_int(record_value, 1, value_id);
+sqlite3_bind_int(record_value, 2, record_id);
+sqlite3_bind_int(record_value, 3, user_id);
+sqlite3_bind_int(record_value, 4, value);
+
+if (sqlite3_step(record_value) != SQLITE_DONE) {
+	std::cerr << sqlite3_errmsg(db) << std::endl;
+} else {
+	std::cout << "Record value inserted.\n";
+}
+
+sqlite3_finalize(record_value);
+
+sqlite3_close(db);
+
