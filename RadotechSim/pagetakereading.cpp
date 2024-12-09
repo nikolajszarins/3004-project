@@ -63,9 +63,9 @@ void PageTakeReading::deviceSignal(RadotechDevice *device) {
     case RadotechDevice::Status::ERROR:
     default:
         if (device->getBattery() < RADOTECH_BATTERY_READING_USAGE) {
-            ui->status->setText("Recharge device battery to continue!");
+            ui->status->setText("Recharge device battery!");
         } else {
-            ui->status->setText("Comm error. Try reconnecting device.");
+            ui->status->setText("Error. Try reconnecting device.");
         }
         return;
     }
