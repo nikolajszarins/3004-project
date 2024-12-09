@@ -13,11 +13,13 @@ class PageProfileEdit : public Page
     Q_OBJECT
 
 public:
-    explicit PageProfileEdit(MainWindow *mainWindow, Page *parentMenu, QWidget *parent = nullptr);
+    explicit PageProfileEdit(int profileIdx, MainWindow *mainWindow, Page *parentMenu, QWidget *parent = nullptr);
     ~PageProfileEdit();
 
 private:
     Ui::PageProfileEdit *ui;
+
+    int profileIdx;
 
     void finish();
 };

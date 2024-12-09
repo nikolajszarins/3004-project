@@ -24,6 +24,7 @@ public:
     void back();
 
     UserProfile *getProfile(int idx);
+    void setProfile(int idx, UserProfile *profile);
 
 private:
     Ui::MainWindow *ui;

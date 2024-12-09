@@ -54,7 +54,7 @@ void PageProfileSelect::update() {
 
 void PageProfileSelect::selectProfile(int idx) {
     if (mainWindow->getProfile(idx) == nullptr) {
-        mainWindow->setPage(new PageProfileEdit(mainWindow, this));
+        mainWindow->setPage(new PageProfileEdit(idx, mainWindow, this));
     } else {
         mainWindow->setPage(new PageRecordList(mainWindow, this));
     }

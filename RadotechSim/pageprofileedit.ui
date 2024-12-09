@@ -29,7 +29,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="selName">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -52,7 +52,7 @@
     <string>Age</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox">
+  <widget class="QSpinBox" name="selAge">
    <property name="geometry">
     <rect>
      <x>140</x>
@@ -68,7 +68,7 @@
     <number>18</number>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_2">
+  <widget class="QSpinBox" name="selHeight">
    <property name="geometry">
     <rect>
      <x>140</x>
@@ -91,7 +91,7 @@
     <string>Height (cm)</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_3">
+  <widget class="QSpinBox" name="selWeight">
    <property name="geometry">
     <rect>
      <x>140</x>

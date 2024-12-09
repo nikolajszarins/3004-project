@@ -58,3 +58,8 @@ UserProfile *MainWindow::getProfile(int idx) {
         return nullptr;
     return profiles[idx];
 }
+
+void MainWindow::setProfile(int idx, UserProfile *profile) {
+    if (idx >= 0 && idx < NUM_PROFILES)
+        profiles[idx] = profile;
+}
