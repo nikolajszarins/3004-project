@@ -8,7 +8,7 @@ UserProfile::UserProfile(int id, QString n, int a, int h, int w) {
     this->weight = w;
 }
 
-void UserProfile::addRecord(Record record) {
+void UserProfile::addRecord(Record *record) {
     records.append(record);
 }
 
@@ -22,7 +22,7 @@ QString UserProfile::getName() { return name; }
 int UserProfile::getAge() { return age; }
 int UserProfile::getHeight() { return height; }
 int UserProfile::getWeight() { return weight; }
-QVector<Record>* UserProfile::getRecords() { return &records; }
+QVector<Record *>* UserProfile::getRecords() { return &records; }
 
 void UserProfile::setName(QString newName) { name = newName; }
 void UserProfile::setAge(int newAge) { age = newAge; }

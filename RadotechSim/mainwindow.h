@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "userprofile.h"
+#include "radotech.h"
 
 #define NUM_PROFILES 5
 
@@ -30,8 +31,12 @@ private:
     Ui::MainWindow *ui;
 
     Page *page = nullptr;
+    RadotechDevice device;
     UserProfile *profiles[NUM_PROFILES];
 
-    void deviceSignal();
+    void updateDeviceUI();
+    void setDeviceBattery();
+    void setDeviceStatus();
+    void touchToSkin();
 };
 #endif // MAINWINDOW_H

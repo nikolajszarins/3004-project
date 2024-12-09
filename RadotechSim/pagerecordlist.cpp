@@ -25,15 +25,25 @@ PageRecordList::PageRecordList(int profileIdx, MainWindow *mainWindow, Page *par
 void PageRecordList::update() {
     title = QString("Hello, %1").arg(profile->getName());
 
+    QLayoutItem* item;
+    while ((item = ui->historyLayout->takeAt(0)) != nullptr) {
+        if (QWidget* widget = item->widget()) {
+            widget->deleteLater();
+        }
+        delete item;
+    }
+
     for (auto& record: qAsConst(*profile->getRecords())) {
-        QPushButton button;
-        int recordId = record.getId();
-        button.setText(QString("Analysis %1 (%2)").arg(recordId + 1).arg(record.getDate().toString()));
-        connect(&button, &QPushButton::released, this, [this, recordId]() {
+        QPushButton *button = new QPushButton(mainWindow);
+        button->setGeometry(1, 1, 229, 34);
+        int recordId = record->getId();
+        button->setText(QString("Analysis %1 (%2)").arg(recordId).arg(record->getDate().toString("MM-dd hh:mm")));
+        connect(button, &QPushButton::released, this, [this, recordId]() {
             viewRecord(recordId);
         });
-        ui->historyLayout->addWidget(&button);
+        ui->historyLayout->addWidget(button);
     }
+    ui->historyLayout->addSpacerItem(new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding));
 }
 
 PageRecordList::~PageRecordList()
@@ -42,11 +52,11 @@ PageRecordList::~PageRecordList()
 }
 
 void PageRecordList::newRecord() {
-    mainWindow->setPage(new PageTakeReading(mainWindow, this));
+    mainWindow->setPage(new PageTakeReading(profileIdx, mainWindow, this));
 }
 
 void PageRecordList::viewRecord(int recordId) {
-    mainWindow->setPage(new PageRecord(mainWindow, this));
+    mainWindow->setPage(new PageRecord(profileIdx, recordId, mainWindow, this));
 }
 
 void PageRecordList::editProfile() {

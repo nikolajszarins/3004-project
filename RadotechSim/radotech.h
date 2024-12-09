@@ -15,19 +15,37 @@ Functions:
 
 */
 
+#define RADOTECH_BATTERY_FULL 100.0
+#define RADOTECH_BATTERY_READING_USAGE 6.0
+
 class RadotechDevice {
-	private:
-		double battery;
-		bool attached;
 	
 	public:
+        enum Status {
+            NOT_CONNECTED = 0,
+            READY = 1,
+            ERROR = 2
+        };
+
 		RadotechDevice();
+
+        Status getStatus();
+        void setStatus(Status);
 		
 		void attachToSkin(int reading);
 		void detachFromSkin();
+        bool isAttached();
 		
 		double getBattery();
-		void setBattery(int val);
+        void setBattery(double val);
+
+        int getReading();
+
+    private:
+        Status status;
+        double battery;
+        bool attached;
+        int reading;
 };
 
 #endif

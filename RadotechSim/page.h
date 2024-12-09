@@ -2,6 +2,7 @@
 #define PAGE_H
 
 #include <QWidget>
+#include "radotech.h"
 
 class MainWindow;
 
@@ -14,7 +15,7 @@ public:
 
     virtual ~Page() = default;
     virtual void update() {}
-    virtual void deviceSignal() {}
+    virtual void deviceSignal(RadotechDevice *device) {}
 
 protected:
     MainWindow *mainWindow;

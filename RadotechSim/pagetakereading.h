@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "page.h"
+#include "record.h"
 
 namespace Ui {
 class PageTakeReading;
@@ -13,14 +14,19 @@ class PageTakeReading : public Page
     Q_OBJECT
 
 public:
-    explicit PageTakeReading(MainWindow *mainWindow, Page *parentMenu, QWidget *parent = nullptr);
+    explicit PageTakeReading(int profileIdx, MainWindow *mainWindow, Page *parentMenu, QWidget *parent = nullptr);
     ~PageTakeReading();
 
-    void deviceSignal();
+    void deviceSignal(RadotechDevice *device);
 
 private:
     Ui::PageTakeReading *ui;
 
+    int profileIdx;
+    int currentReading = 0;
+    int readings[READING_COUNT];
+
+    void nextStatus();
     void goToResults();
 };
 

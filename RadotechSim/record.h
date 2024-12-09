@@ -15,13 +15,15 @@
 
 */
 
+#define READING_COUNT 24
+
 class Record {
 	private:
         int recordValues[24];
 		QDateTime date;
-        int id =0;
+        int id;
 	public:
-		Record();
+        Record(int id);
 		
         int getRecordValue(int index) const;
         void setRecordValue(int index, const int& value);
