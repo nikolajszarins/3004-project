@@ -1,27 +1,26 @@
 #include "record.h"
 
 Record::Record(int id) {
-
     generateValues(recordValues);
     this->id = id;
-	this->date = QDateTime::currentDateTime();
+    this->date = QDateTime::currentDateTime();
 }
 
 int Record::getRecordValue(int index) const {
     if (index >= 0 && index < READING_COUNT) {
-		return recordValues[index];
-	}
+        return recordValues[index];
+    }
     return -1;
 }
 
 void Record::setRecordValue(int index, const int& value) {
     if (index >= 0 && index < READING_COUNT) {
-		recordValues[index] = value;
-	}
+        recordValues[index] = value;
+    }
 }
 
 QDateTime Record::getDate() const {
-	return date;
+    return date;
 }
 
 int Record::getId() const {
@@ -44,9 +43,16 @@ QString Record::toString() {
 }
 
 void Record::setDate(const QDateTime& newDate) {
-	date = newDate;
+    date = newDate;
 }
 
+int* Record::getRecordArray(){
+    return recordValues;
+}
+
+int* Record::getBaselineValues(){
+    return baselineValues;
+}
 
 /*
 
@@ -60,9 +66,8 @@ void Record::setDate(const QDateTime& newDate) {
 
 */
 void Record::generateValues(int recordValues[READING_COUNT]) {
-    // Baseline values for the 12 meridians based on approximated normal electrical conductance values
-    int baselineValues[12] = {600, 550, 580, 500, 620, 640, 610, 580, 570, 560, 590, 600};
 
+    srand(time(0));
     // Generate values by looping through the 12 meridians
     for (int i = 0; i < 12; i++) {
         // Generate a random deviation (-15 to +15) for the left side of the meridian
