@@ -16,7 +16,7 @@ Functions:
 */
 
 #define RADOTECH_BATTERY_FULL 100.0
-#define RADOTECH_BATTERY_READING_USAGE 6.0
+#define RADOTECH_BATTERY_READING_USAGE 0.5
 
 class RadotechDevice {
 	

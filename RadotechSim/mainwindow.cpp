@@ -4,6 +4,11 @@
 #include "page.h"
 #include "pageprofileselect.h"
 #include <QLayout>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QDebug>
+#include <QDir>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,8 +16,40 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    //grab main directory to access database
+    QDir dir = QDir(QCoreApplication::applicationDirPath());
+    dir.cdUp();
+
+    QString dbPath = dir.filePath("users.db");
+
+    if (sqlite3_open(dbPath.toUtf8().constData(), &db) != SQLITE_OK) {
+        qDebug() << sqlite3_errmsg(db);
+    }
+
     for (int i = 0; i < NUM_PROFILES; i++) {
         profiles[i] = nullptr;
+    }
+
+    // initalize profiles and records from database
+
+    sqlite3_stmt* users;
+    const char* sql = "SELECT * FROM users;";
+    if (sqlite3_prepare_v2(db, sql, -1, &users, nullptr) != SQLITE_OK) {
+        qDebug() << sqlite3_errmsg(db);
+        return;
+    }
+    int index = 0;
+
+    while (sqlite3_step(users) == SQLITE_ROW) {
+        int id = sqlite3_column_int(users, 0);
+        const unsigned char* name = sqlite3_column_text(users, 1);
+        int age = sqlite3_column_int(users, 2);
+        double weight = sqlite3_column_double(users, 3);
+        double height = sqlite3_column_double(users, 4);
+
+        QString userName = QString::fromUtf8(reinterpret_cast<const char*>(name));
+        profiles[index] = new UserProfile(id, userName, age, weight, height);
+        index++;
     }
 
     connect(ui->buttonBack, &QPushButton::released, this, &MainWindow::back);

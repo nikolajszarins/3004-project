@@ -4,8 +4,10 @@
 #include <QMainWindow>
 #include "userprofile.h"
 #include "radotech.h"
+#include <sqlite3.h>
 
 #define NUM_PROFILES 5
+#define READING_COUNT 24
 
 class Page;
 
@@ -18,6 +20,8 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    sqlite3* db;
+
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 

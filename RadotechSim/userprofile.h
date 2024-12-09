@@ -33,7 +33,7 @@ class UserProfile {
         QVector<Record *> records;
 	
 	public:
-        UserProfile(int id, QString n, int a, int h, int w);
+        UserProfile(int id, QString n, int a, double h, double w);
 		~UserProfile();
 		
         void addRecord(Record *record);
@@ -42,14 +42,14 @@ class UserProfile {
 		int getId();
 		QString getName();
 		int getAge();
-		int getHeight();
-		int getWeight();
+        double getHeight();
+        double getWeight();
         QVector<Record *>* getRecords();
 		
 		void setName(QString newName);
 		void setAge(int newAge);
-		void setHeight(int newHeight);
-        void setWeight(int newWeight);
+        void setHeight(double newHeight);
+        void setWeight(double newWeight);
 };
 
 #endif
