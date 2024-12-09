@@ -17,19 +17,20 @@
 
 class Record {
 	private:
-		QString recordValues[24];
+        int recordValues[24];
 		QDateTime date;
-        int id =1;
+        int id =0;
 	public:
 		Record();
 		
-		QString getRecordValue(int index) const;
-		void setRecordValue(int index, const QString& value);
+        int getRecordValue(int index) const;
+        void setRecordValue(int index, const int& value);
         QString toString();
 		
 		QDateTime getDate() const;
         int getId() const;
 		void setDate(const QDateTime& date);
+        void generateValues(int recordValues[24]);
 				
 };
 
