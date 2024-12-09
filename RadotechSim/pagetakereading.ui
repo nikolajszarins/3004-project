@@ -17,9 +17,9 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>90</y>
+     <y>80</y>
      <width>211</width>
-     <height>111</height>
+     <height>121</height>
     </rect>
    </property>
    <property name="font">
@@ -28,7 +28,7 @@
     </font>
    </property>
    <property name="text">
-    <string>🧍</string>
+    <string>◎</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

@@ -37,7 +37,7 @@ void PageRecordList::update() {
         QPushButton *button = new QPushButton(mainWindow);
         button->setGeometry(1, 1, 229, 34);
         int recordId = record->getId();
-        button->setText(QString("Analysis %1 (%2)").arg(recordId).arg(record->getDate().toString("MM-dd hh:mm")));
+        button->setText(QString("Analysis %1 (%2)").arg(recordId + 1).arg(record->getDate().toString("MM-dd hh:mm")));
         connect(button, &QPushButton::released, this, [this, recordId]() {
             viewRecord(recordId);
         });
