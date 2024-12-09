@@ -48,7 +48,7 @@ MainWindow::MainWindow(QWidget *parent)
         double height = sqlite3_column_double(users, 4);
 
         QString userName = QString::fromUtf8(reinterpret_cast<const char*>(name));
-        profiles[index] = new UserProfile(id, userName, age, weight, height);
+        profiles[index] = new UserProfile(id, userName, age, height, weight);
         index++;
     }
 
