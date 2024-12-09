@@ -15,6 +15,14 @@ PageProfileEdit::PageProfileEdit(int profileIdx, MainWindow *mainWindow, Page *p
     this->profileIdx = profileIdx;
     title = QString("Editing Profile %1").arg(profileIdx + 1);
 
+    UserProfile *profile = mainWindow->getProfile(profileIdx);
+    if (profile != nullptr) {
+        ui->selName->setText(profile->getName());
+        ui->selAge->setValue(profile->getAge());
+        ui->selHeight->setValue(profile->getHeight());
+        ui->selWeight->setValue(profile->getWeight());
+    }
+
     connect(ui->buttonFinish, &QPushButton::released, this, &PageProfileEdit::finish);
 }
 

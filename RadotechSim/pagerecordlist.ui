@@ -22,7 +22,7 @@
      <height>231</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="historyLayout">
     <item>
      <widget class="QPushButton" name="buttonOld2">
       <property name="text">

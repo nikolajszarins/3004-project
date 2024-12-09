@@ -30,8 +30,6 @@ PageProfileSelect::PageProfileSelect(MainWindow *mainWindow, QWidget *parent) :
             selectProfile(i);
         });
     }
-
-    update();
 }
 
 PageProfileSelect::~PageProfileSelect()
@@ -56,6 +54,6 @@ void PageProfileSelect::selectProfile(int idx) {
     if (mainWindow->getProfile(idx) == nullptr) {
         mainWindow->setPage(new PageProfileEdit(idx, mainWindow, this));
     } else {
-        mainWindow->setPage(new PageRecordList(mainWindow, this));
+        mainWindow->setPage(new PageRecordList(idx, mainWindow, this));
     }
 }
