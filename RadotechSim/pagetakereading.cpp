@@ -74,8 +74,8 @@ void PageTakeReading::deviceSignal(RadotechDevice *device) {
 void PageTakeReading::goToResults() {
     MainWindow *mainWindow = this->mainWindow;
     Page *parent = Page::parent;
+    int recordId = mainWindow->getProfile(profileIdx)->getRecords()->size() - 1;
 
     mainWindow->back(); // This function call deletes this PageTakeReading -- careful!
-    int recordId = mainWindow->getProfile(profileIdx)->getRecords()->size() - 1;
     mainWindow->setPage(new PageRecord(profileIdx, recordId, mainWindow, parent));
 }
