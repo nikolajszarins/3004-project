@@ -73,6 +73,16 @@ void PageProfileSelect::deleteProfile(int idx) {
     if (profile == nullptr) {
         return;
     }
+    
+    // delete user from database
+    const char* sql = "DELETE FROM users WHERE id = ?;";
+    sqlite3_stmt* delete_user;
+
+    sqlite3_prepare_v2(mainWindow->db, sql, -1, &delete_user, nullptr);
+    sqlite3_bind_int(delete_user, 1, idx+1);
+    sqlite3_step(delete_user);
+    sqlite3_finalize(delete_user);
+    
     delete profile;
     mainWindow->setProfile(idx, nullptr);
     update();
