@@ -68,16 +68,12 @@ void PageTakeReading::nextStatus() {
                 sqlite3_bind_int(insert_values, 1, i+1);
                 sqlite3_bind_int(insert_values, 2, record_id);
                 sqlite3_bind_int(insert_values, 3, profileIdx+1);
-                sqlite3_bind_int(insert_values, 4, readings[i]);
+                sqlite3_bind_int(insert_values, 4, record->getRecordValue(i));
                 sqlite3_step(insert_values);
                 sqlite3_reset(insert_values);
             }
         }
         sqlite3_finalize(insert_values);
-
-        for (int i = 0; i < READING_COUNT; i++) {
-            record->setRecordValue(i, readings[i]);
-        }
 
         mainWindow->getProfile(profileIdx)->addRecord(record);
 
@@ -100,9 +96,6 @@ void PageTakeReading::deviceSignal(RadotechDevice *device) {
         ui->status->setText("Connect the RaDoTech to continue!");
         return;
     case RadotechDevice::Status::READY:
-        if (device->isAttached()) {
-            readings[currentReading++] = device->getReading();
-        }
         nextStatus();
         return;
     case RadotechDevice::Status::ERROR:

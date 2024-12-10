@@ -174,7 +174,7 @@ void MainWindow::setDeviceStatus() {
 }
 
 void MainWindow::touchToSkin() {
-    device.attachToSkin(ui->selReading->value());
+    device.attachToSkin();
     page->deviceSignal(&device);
     device.detachFromSkin();
 

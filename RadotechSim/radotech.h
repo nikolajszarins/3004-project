@@ -32,20 +32,17 @@ class RadotechDevice {
         Status getStatus();
         void setStatus(Status);
 		
-		void attachToSkin(int reading);
+        void attachToSkin();
 		void detachFromSkin();
         bool isAttached();
 		
 		double getBattery();
         void setBattery(double val);
 
-        int getReading();
-
     private:
         Status status;
         double battery;
         bool attached;
-        int reading;
 };
 
 #endif

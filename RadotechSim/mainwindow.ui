@@ -207,40 +207,11 @@
      <string>%</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>160</y>
-      <width>131</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Resistance reading:</string>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="selReading">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>160</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="maximum">
-     <number>300</number>
-    </property>
-    <property name="value">
-     <number>150</number>
-    </property>
-   </widget>
    <widget class="QPushButton" name="buttonApply">
     <property name="geometry">
      <rect>
       <x>320</x>
-      <y>200</y>
+      <y>140</y>
       <width>111</width>
       <height>31</height>
      </rect>

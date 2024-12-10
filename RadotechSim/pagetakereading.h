@@ -24,7 +24,6 @@ private:
 
     int profileIdx;
     int currentReading = 0;
-    int readings[READING_COUNT];
 
     void nextStatus();
     void goToResults();

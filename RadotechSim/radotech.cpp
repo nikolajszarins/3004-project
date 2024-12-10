@@ -23,9 +23,8 @@ void RadotechDevice::setBattery(double val) {
     }
 }
 
-void RadotechDevice::attachToSkin(int reading) {
+void RadotechDevice::attachToSkin() {
     attached = true;
-    this->reading = reading;
 }
 
 void RadotechDevice::detachFromSkin() {
@@ -45,12 +44,4 @@ void RadotechDevice::setStatus(Status s) {
 
 RadotechDevice::Status RadotechDevice::getStatus() {
     return status;
-}
-
-int RadotechDevice::getReading() {
-    if (attached && battery >= RADOTECH_BATTERY_READING_USAGE && status == Status::READY) {
-        setBattery(battery - RADOTECH_BATTERY_READING_USAGE);
-        return reading;
-    }
-    return -1;
 }
