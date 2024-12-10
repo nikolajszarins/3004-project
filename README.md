@@ -29,10 +29,10 @@ Breakdown of work:
 Name: Nikolajs Zarins  
 Student Number: 101273615   
 Breakdown of work: 
-- User Interface design and development
+- Refining main success Use Case
+- User Interface visual and technical design
 - UML Class diagrams
-- Classes implementation (include specific classes at end)
-- Planning & Recording tests video
+- Class implementation (`MainWindow`, `Page`, `PageProfileSelect`, `PageProfileEdit`, `PageRecordList`, `PageTakeReading`) - core UI functionality and data class interaction
 
 <br>
 
