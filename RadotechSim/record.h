@@ -1,53 +1,64 @@
 #ifndef RECORD_H
 #define RECORD_H
 
-#include <QDateTime>
-#include <QString>
+#include <QDateTime>  // For storing and managing date-time values
+#include <QString>    // For handling string operations
+
+#define READING_COUNT 24  // Constant: Total number of readings per record (12 meridians x 2 sides)
 
 /*
-    Purpose: Used to hold information relating to measurements taken
-
-    Date Members:
-        - QString recordValues[]: an array of QStrings to represent all 24 measurement values
-        - QDateTime date: a QDateTime object to hold the value of the date of measurement
-    Functions:
-        - Getters and Setters
-
-*/
-
-#define READING_COUNT 24
-
+ * Record Class:
+ * - Manages the 24 measurement values, baseline data, and the date of measurement.
+ * - Provides utility functions for data generation, storage, and recommendations.
+ */
 class Record {
-    private:
-        // Array to hold the 24 electrical measurements
-        int recordValues[24];
+private:
+    int recordValues[24];
 
-        // Baseline values for the 12 meridians based on approximated normal electrical conductance 
-        // values predefined by the Ryodoraku methodology or experimental results used to provide a 
-        // reference point for detecting deviations or abnormalities.
-        int baselineValues[12] = {600, 550, 580, 500, 620, 640, 610, 580, 570, 560, 590, 600};
-        
-        QDateTime date;
-        int id;
-    public:
-        Record(int id);
-        Record(int id, QString date, int values[24]);
+    /*
+     * Baseline Values:
+     * - Predefined normal conductance values for 12 meridians.
+     * - Used as a reference to compare against the recorded values.
+     */
+    int baselineValues[12] = {600, 550, 580, 500, 620, 640, 610, 580, 570, 560, 590, 600};
 
-        // Getters and Setters
-        int getRecordValue(int index) const;
-        QDateTime getDate() const;
-        int getId() const;
-        void setRecordValue(int index, const int& value);
-        void setDate(const QDateTime& date);
-        int *getRecordArray();
-        int *getBaselineValues();
+    QDateTime date;
+    int id;
 
-        // Object & program functions
-        QString toString();
-        void generateValues(int recordValues[24]);
-        // Generate basic health recommendation based on values
-        QString recommendation();
+public:
+    /*
+     * Constructors:
+     * - Record(int id): Initializes a record with random generated values and a timestamp.
+     * - Record(int id, QString date, int values[24]): Initializes a record with provided data.
+     */
+    Record(int id);
+    Record(int id, QString date, int values[24]);
 
+    int getRecordValue(int index) const;
+    QDateTime getDate() const;
+    int getId() const;
+    int *getRecordArray();
+    int *getBaselineValues();
+
+    void setRecordValue(int index, const int& value);
+    void setDate(const QDateTime& date);
+
+    /*
+     * toString:
+     * - Formats and returns the record data as a readable string.
+     * - Includes the 24 readings grouped by meridians and their sides.
+     */
+    QString toString();
+
+    /*
+     * generateValues:
+     * - Populates the recordValues array with randomized measurements.
+     * - Uses baselineValues as a reference and adds slight variations to simulate data.
+     * @param recordValues: Output array that stores the generated values.
+     */
+    void generateValues(int recordValues[24]);
+
+    QString recommendation();
 };
 
-#endif
+#endif // RECORD_H

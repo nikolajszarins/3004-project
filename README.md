@@ -1,5 +1,10 @@
 # Team 36 README
 
+Commands to install SQLite3 and QtCharts libraries:
+`sudo apt install sqlite3 libsqlite3-dev`
+`sudo apt install libqt5charts5 libqt5charts5-dev`
+
+
 ## Team Members and work breakdown
 Name: Arunteja Kuchibhatla  
 Student Number: 101156178  
@@ -36,8 +41,9 @@ Student Number: 101166398
 Breakdown of work: 
 - Use Cases 
 - Sequence Diagrams 
-- Classes implementation (include specific classes at end)
-- Planning & Recording tests video
+- Classes implementation (`pagerecord.cpp`, `pagerecord.h` - implemented a bar graph to show analysis results)
+- Code review and detailed comments for documentation and clarity
+- Recorded the simulation video
 
 
 ## Organization of Submission:
@@ -58,4 +64,5 @@ Design documentation is located in `design_documentation`, this is where you wil
 
 
 **Link to tests video:** 
+https://youtu.be/RejyeX_TaVk
 
