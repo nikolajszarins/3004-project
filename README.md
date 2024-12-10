@@ -19,10 +19,10 @@ Breakdown of work:
 Name: Ben Kyd   
 Student Number: 101167318   
 Breakdown of work: 
-- Classes implementation (include specific classes at end)
+- Classes implementation (`userprofile.cpp`, `userprofile.h`, `radotech.cpp`, `radotech.h`)
 - State Machine diagrams 
 - Use Cases diagram 
-- Planning & Recording tests video
+- Database design and implementation
 
 <br>
 
