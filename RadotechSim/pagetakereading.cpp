@@ -96,6 +96,7 @@ void PageTakeReading::deviceSignal(RadotechDevice *device) {
         ui->status->setText("Connect the RaDoTech to continue!");
         return;
     case RadotechDevice::Status::READY:
+        currentReading++;
         nextStatus();
         return;
     case RadotechDevice::Status::ERROR:
