@@ -24,6 +24,7 @@
    </property>
    <property name="font">
     <font>
+     <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
@@ -49,7 +50,7 @@
     </font>
    </property>
    <property name="plainText">
-    <string>Your karma is fucked. You should buy our supplements! Visit infowars.com</string>
+    <string>Your karma is not good. You should buy our supplements! Visit infowars.com</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
@@ -63,6 +64,7 @@
    </property>
    <property name="font">
     <font>
+     <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
