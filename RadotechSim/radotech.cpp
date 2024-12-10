@@ -93,7 +93,7 @@ void RadotechDevice::setStatus(Status s) {
  * @return: True if the battery was successfully depleted, false otherwise.
  */
 bool RadotechDevice::depleteBattery() {
-    if (battery > RADOTECH_BATTERY_READING_USAGE) {
+    if (battery >= RADOTECH_BATTERY_READING_USAGE) {
         battery -= RADOTECH_BATTERY_READING_USAGE; // Subtract battery usage for a reading
         return true;
     } else {
