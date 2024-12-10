@@ -97,7 +97,9 @@ void PageTakeReading::deviceSignal(RadotechDevice *device) {
         return;
     case RadotechDevice::Status::READY:
         if (device->isAttached()) {
-            currentReading++;
+            if (device->depleteBattery()) {
+                currentReading++;
+            }
         }
         nextStatus();
         return;

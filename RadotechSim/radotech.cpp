@@ -42,6 +42,15 @@ void RadotechDevice::setStatus(Status s) {
     }
 }
 
+bool RadotechDevice::depleteBattery() {
+    if (battery > RADOTECH_BATTERY_READING_USAGE) {
+        battery -= RADOTECH_BATTERY_READING_USAGE;
+        return true;
+    } else {
+        return false;
+    }
+}
+
 RadotechDevice::Status RadotechDevice::getStatus() {
     return status;
 }

@@ -38,6 +38,7 @@ class RadotechDevice {
 		
 		double getBattery();
         void setBattery(double val);
+        bool depleteBattery();
 
     private:
         Status status;
