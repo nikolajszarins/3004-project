@@ -33,11 +33,33 @@ MainWindow::MainWindow(QWidget *parent)
     // initalize profiles and records from database
 
     sqlite3_stmt* users;
+    sqlite3_stmt* records;
+
     const char* sql = "SELECT * FROM users;";
+    const char* sql2 = R"(
+            SELECT
+                r.id AS record_id,
+                r.date AS record_date,
+                rv.id AS value_id,
+                rv.value AS value
+            FROM
+                records r
+            JOIN
+                record_values rv
+            ON
+                r.id = rv.record_id AND r.user_id = rv.user_id
+            WHERE
+                r.user_id = ?
+            ORDER BY
+                r.id, rv.id;
+        )";
+
     if (sqlite3_prepare_v2(db, sql, -1, &users, nullptr) != SQLITE_OK) {
         qDebug() << sqlite3_errmsg(db);
         return;
     }
+
+    sqlite3_prepare_v2(db, sql2, -1, &records, nullptr);
 
     while (sqlite3_step(users) == SQLITE_ROW) {
         int id = sqlite3_column_int(users, 0);
@@ -48,7 +70,34 @@ MainWindow::MainWindow(QWidget *parent)
 
         QString userName = QString::fromUtf8(reinterpret_cast<const char*>(name));
         profiles[id-1] = new UserProfile(id, userName, age, height, weight);
+
+
+        sqlite3_reset(records);
+        sqlite3_bind_int(records, 1, id);
+
+        while (sqlite3_step(records) == SQLITE_ROW) {
+            int record_id = sqlite3_column_int(records, 0);
+            const unsigned char* dateString = sqlite3_column_text(records, 1);
+            QString date = QString::fromUtf8(reinterpret_cast<const char*>(dateString));
+
+            int values[24] = {0};
+            int count = 0;
+
+            do {
+                    values[count] = sqlite3_column_int(records, 3);
+                    count++;
+
+                    if (count >= 24) {
+                        break;
+                    }
+                } while (sqlite3_step(records) == SQLITE_ROW && sqlite3_column_int(records, 0) == record_id);
+
+                profiles[id - 1]->addRecord(new Record(record_id-1, date, values));
+        }
     }
+
+    sqlite3_finalize(users);
+    sqlite3_finalize(records);
 
     connect(ui->buttonBack, &QPushButton::released, this, &MainWindow::back);
     connect(ui->selBattery, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, &MainWindow::setDeviceBattery);
