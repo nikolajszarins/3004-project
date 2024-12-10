@@ -11,7 +11,8 @@ PageRecord::PageRecord(int profileIdx, int recordId, MainWindow *mainWindow, Pag
     this->mainWindow = mainWindow;
     Page::parent = parentMenu;
     title = "Results";
-
+    
+    // Get the record to display
     record = mainWindow->getProfile(profileIdx)->getRecords()->at(recordId);
 }
 

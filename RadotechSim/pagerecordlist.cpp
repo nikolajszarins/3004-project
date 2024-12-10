@@ -22,6 +22,7 @@ PageRecordList::PageRecordList(int profileIdx, MainWindow *mainWindow, Page *par
     connect(ui->buttonEditProfile, &QPushButton::released, this, &PageRecordList::editProfile);
 }
 
+// Update the page with the latest information
 void PageRecordList::update() {
     title = QString("Hello, %1").arg(profile->getName());
 
@@ -32,7 +33,7 @@ void PageRecordList::update() {
         }
         delete item;
     }
-
+    // Add a button for each record
     for (auto& record: qAsConst(*profile->getRecords())) {
         QPushButton *button = new QPushButton(mainWindow);
         button->setGeometry(1, 1, 229, 34);
@@ -51,14 +52,17 @@ PageRecordList::~PageRecordList()
     delete ui;
 }
 
+// Create a new record
 void PageRecordList::newRecord() {
     mainWindow->setPage(new PageTakeReading(profileIdx, mainWindow, this));
 }
 
+// View a specific record
 void PageRecordList::viewRecord(int recordId) {
     mainWindow->setPage(new PageRecord(profileIdx, recordId, mainWindow, this));
 }
 
+// Edit the user profile
 void PageRecordList::editProfile() {
     mainWindow->setPage(new PageProfileEdit(profileIdx, mainWindow, this));
 }

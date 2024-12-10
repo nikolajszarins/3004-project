@@ -66,7 +66,10 @@ int* Record::getBaselineValues(){
 
     Function to generate dummy Ryodoraku measurements for 12 meridians (H1-H6 and F1-F6)
     Each meridian has two measurements: Left body and Right body, for a total of 24 readings.
-    The function uses a predefined baseline for each meridian and introduces small variations.
+    The function uses a predefined baseline for each meridian and introduces small variations to:
+
+    1. Introduce random variations to simulate real-world fluctuations in measurements.
+    2. Include occasional intentional anomalies for testing purposes.
 
     input: recordValues int array that stores the 24 measurements
 
@@ -79,6 +82,7 @@ void Record::generateValues(int recordValues[READING_COUNT]) {
     // Generate values by looping through the 12 meridians
     for (int i = 0; i < 12; i++) {
         // Generate a random deviation (-15 to +15) for the left side of the meridian
+        // to simulate small, realistic fluctuations around the baseline (to mimic body's natural asymmetry)
         int variation = rand() % 30 - 15;
         // Left Side measurement
         recordValues[2 * i] = baselineValues[i] + variation;
@@ -86,9 +90,10 @@ void Record::generateValues(int recordValues[READING_COUNT]) {
         recordValues[2 * i + 1] = baselineValues[i] + (rand() % 30 - 15);
     }
 
-    // Optional Interference: Introduce simulated imbalances to some meridians for testing purposes
-    // e.g: Increase the left side of H3 and decrease the right side of H3
-    // Example: Abnormality in H3 left
+    // Introduce simulated imbalances to some meridians to test detection logic 
+    // e.g: Increase the left side of H3 and decrease the right side of H3 to 
+    // mimic real-world pathological deviations.
+    // Example: Abnormality in H3 left 
     recordValues[4] += 100;
     // Example: Abnormality in H3 right
     recordValues[5] -= 50;

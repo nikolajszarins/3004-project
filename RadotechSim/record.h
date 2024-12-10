@@ -19,9 +19,14 @@
 
 class Record {
     private:
+        // Array to hold the 24 electrical measurements
         int recordValues[24];
-        // Baseline values for the 12 meridians based on approximated normal electrical conductance values
+
+        // Baseline values for the 12 meridians based on approximated normal electrical conductance 
+        // values predefined by the Ryodoraku methodology or experimental results used to provide a 
+        // reference point for detecting deviations or abnormalities.
         int baselineValues[12] = {600, 550, 580, 500, 620, 640, 610, 580, 570, 560, 590, 600};
+        
         QDateTime date;
         int id;
     public:
