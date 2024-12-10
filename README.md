@@ -5,8 +5,9 @@ Name: Arunteja Kuchibhatla
 Student Number: 101156178  
 Breakdown of work: 
 - Worked on defining and refining Use Cases and adding extensions 
-- Requirements Traceability Matrix 
 - Classes Implementation (`pagerecord.cpp`, `pagerecord.h`, `record.cpp`, `record.h`)
+- Requirements Traceability Matrix
+- Detailing program design (function definitions & comments) and explanation of design in the pdf
 - Planning & Recording tests video
 
 <br>
