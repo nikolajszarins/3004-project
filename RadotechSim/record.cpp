@@ -62,6 +62,25 @@ int* Record::getBaselineValues(){
     return baselineValues;
 }
 
+QString Record::recommendation(){
+    int baselineAvg = 0, measurementAvg = 0;
+
+    for(int i =0; i<12; i++){
+        baselineAvg += baselineValues[i];
+    }
+    for(int i =0; i<24; i++){
+        measurementAvg += recordValues[i];
+    }
+    baselineAvg = baselineAvg/12;
+    measurementAvg = measurementAvg/24;
+
+    if(measurementAvg > baselineAvg){
+        return "Your average measured readings are higher than baseline/normal! Go get a physician checkup!";
+    }else{
+        return "Your average measured readings are on par! Good job and stay healthy!";
+    }
+}
+
 /*
 
     Function to generate dummy Ryodoraku measurements for 12 meridians (H1-H6 and F1-F6)

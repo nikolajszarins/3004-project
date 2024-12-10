@@ -45,6 +45,8 @@ class Record {
         // Object & program functions
         QString toString();
         void generateValues(int recordValues[24]);
+        // Generate basic health recommendation based on values
+        QString recommendation();
 
 };
 

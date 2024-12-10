@@ -21,6 +21,7 @@ PageRecord::PageRecord(int profileIdx, int recordId, MainWindow *mainWindow, Pag
     record = mainWindow->getProfile(profileIdx)->getRecords()->at(recordId);
 
     createChart();
+    ui->plainTextEdit->setPlainText(record->recommendation());
 }
 
 PageRecord::~PageRecord()
