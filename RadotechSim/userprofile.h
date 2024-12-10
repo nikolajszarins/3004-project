@@ -34,7 +34,6 @@ class UserProfile {
 	
 	public:
         UserProfile(int id, QString n, int a, double h, double w);
-		~UserProfile();
 		
         void addRecord(Record *record);
         void deleteRecord(int idx);

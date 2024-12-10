@@ -75,13 +75,26 @@
        <property name="geometry">
         <rect>
          <x>160</x>
-         <y>15</y>
+         <y>10</y>
          <width>61</width>
-         <height>31</height>
+         <height>25</height>
         </rect>
        </property>
        <property name="text">
         <string>Use</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="buttonDelete0">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>35</y>
+         <width>61</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Delete</string>
        </property>
       </widget>
      </widget>
@@ -135,13 +148,26 @@
        <property name="geometry">
         <rect>
          <x>160</x>
-         <y>15</y>
+         <y>10</y>
          <width>61</width>
-         <height>31</height>
+         <height>25</height>
         </rect>
        </property>
        <property name="text">
         <string>Create</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="buttonDelete1">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>35</y>
+         <width>61</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Delete</string>
        </property>
       </widget>
      </widget>
@@ -195,13 +221,26 @@
        <property name="geometry">
         <rect>
          <x>160</x>
-         <y>15</y>
+         <y>10</y>
          <width>61</width>
-         <height>31</height>
+         <height>25</height>
         </rect>
        </property>
        <property name="text">
         <string>Create</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="buttonDelete2">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>35</y>
+         <width>61</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Delete</string>
        </property>
       </widget>
      </widget>
@@ -255,13 +294,26 @@
        <property name="geometry">
         <rect>
          <x>160</x>
-         <y>15</y>
+         <y>10</y>
          <width>61</width>
-         <height>31</height>
+         <height>25</height>
         </rect>
        </property>
        <property name="text">
         <string>Create</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="buttonDelete3">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>35</y>
+         <width>61</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Delete</string>
        </property>
       </widget>
      </widget>
@@ -315,13 +367,26 @@
        <property name="geometry">
         <rect>
          <x>160</x>
-         <y>15</y>
+         <y>10</y>
          <width>61</width>
-         <height>31</height>
+         <height>25</height>
         </rect>
        </property>
        <property name="text">
         <string>Create</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="buttonDelete4">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>35</y>
+         <width>61</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Delete</string>
        </property>
       </widget>
      </widget>

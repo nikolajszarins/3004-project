@@ -14,11 +14,16 @@ PageProfileSelect::PageProfileSelect(MainWindow *mainWindow, QWidget *parent) :
     parent = nullptr;
     title = "Profile Select";
 
-    buttons[0] = ui->buttonProfile0;
-    buttons[1] = ui->buttonProfile1;
-    buttons[2] = ui->buttonProfile2;
-    buttons[3] = ui->buttonProfile3;
-    buttons[4] = ui->buttonProfile4;
+    useButtons[0] = ui->buttonProfile0;
+    useButtons[1] = ui->buttonProfile1;
+    useButtons[2] = ui->buttonProfile2;
+    useButtons[3] = ui->buttonProfile3;
+    useButtons[4] = ui->buttonProfile4;
+    deleteButtons[0] = ui->buttonDelete0;
+    deleteButtons[1] = ui->buttonDelete1;
+    deleteButtons[2] = ui->buttonDelete2;
+    deleteButtons[3] = ui->buttonDelete3;
+    deleteButtons[4] = ui->buttonDelete4;
     names[0] = ui->nameProfile0;
     names[1] = ui->nameProfile1;
     names[2] = ui->nameProfile2;
@@ -26,8 +31,11 @@ PageProfileSelect::PageProfileSelect(MainWindow *mainWindow, QWidget *parent) :
     names[4] = ui->nameProfile4;
 
     for (int i = 0; i < NUM_PROFILES; i++) {
-        connect(buttons[i], &QPushButton::released, this, [this, i]() {
+        connect(useButtons[i], &QPushButton::released, this, [this, i]() {
             selectProfile(i);
+        });
+        connect(deleteButtons[i], &QPushButton::released, this, [this, i]() {
+            deleteProfile(i);
         });
     }
 }
@@ -42,10 +50,12 @@ void PageProfileSelect::update() {
         UserProfile *profile = mainWindow->getProfile(i);
         if (profile == nullptr) {
             names[i]->setText("(empty)");
-            buttons[i]->setText("Create");
+            useButtons[i]->setText("Create");
+            deleteButtons[i]->hide();
         } else {
             names[i]->setText(profile->getName());
-            buttons[i]->setText("Use");
+            useButtons[i]->setText("Use");
+            deleteButtons[i]->show();
         }
     }
 }
@@ -56,4 +66,14 @@ void PageProfileSelect::selectProfile(int idx) {
     } else {
         mainWindow->setPage(new PageRecordList(idx, mainWindow, this));
     }
+}
+
+void PageProfileSelect::deleteProfile(int idx) {
+    UserProfile *profile = mainWindow->getProfile(idx);
+    if (profile == nullptr) {
+        return;
+    }
+    delete profile;
+    mainWindow->setProfile(idx, nullptr);
+    update();
 }

@@ -25,8 +25,10 @@ private:
     Ui::PageProfileSelect *ui;
 
     void selectProfile(int idx);
+    void deleteProfile(int idx);
 
-    QPushButton *buttons[NUM_PROFILES];
+    QPushButton *useButtons[NUM_PROFILES];
+    QPushButton *deleteButtons[NUM_PROFILES];
     QLabel *names[NUM_PROFILES];
 };
 
