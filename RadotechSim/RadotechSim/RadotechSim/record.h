@@ -26,7 +26,6 @@ class Record {
         int id;
     public:
         Record(int id);
-        Record(int id, QString date, int values[24]);
 
         // Getters and Setters
         int getRecordValue(int index) const;

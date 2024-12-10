@@ -6,14 +6,6 @@ Record::Record(int id) {
     this->date = QDateTime::currentDateTime();
 }
 
-Record::Record(int id, QString date, int values[24]) {
-    this->id = id;
-    this->date = QDateTime::fromString(date, "MM-dd HH:mm");
-    for (int i = 0; i < READING_COUNT; i++) {
-        this->recordValues[i] = values[i];
-    }
-}
-
 int Record::getRecordValue(int index) const {
     if (index >= 0 && index < READING_COUNT) {
         return recordValues[index];
