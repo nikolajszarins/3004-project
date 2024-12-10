@@ -52,6 +52,7 @@ Design documentation is located in `design_documentation`, this is where you wil
 - UML Sequence diagrams
 - UML State Machine diagrams
 - Requirements Traceability Matrix
+- Database schema
   
 <br>
 
