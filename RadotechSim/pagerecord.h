@@ -4,6 +4,8 @@
 #include <QWidget>
 #include "page.h"
 #include "record.h"
+#include <QtCharts/QChartView>
+
 
 namespace Ui {
 class PageRecord;
@@ -19,8 +21,9 @@ public:
 
 private:
     Ui::PageRecord *ui;
-
     Record *record;
+    QtCharts::QChartView *chartView;
+    void createChart();
 };
 
 #endif // PAGERECORD_H
