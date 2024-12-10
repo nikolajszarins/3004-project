@@ -3,6 +3,7 @@
 
 #include "mainwindow.h"
 #include "pagerecord.h"
+#include <QDebug>
 
 PageTakeReading::PageTakeReading(int profileIdx, MainWindow *mainWindow, Page *parentMenu, QWidget *parent) :
     Page(parent),
@@ -30,6 +31,50 @@ void PageTakeReading::nextStatus() {
         UserProfile *profile = mainWindow->getProfile(profileIdx);
 
         Record *record = new Record(profile->getRecords()->size());
+
+        int record_id = 1;
+
+        // find next record_id to be used
+        sqlite3_stmt* stmt;
+        const char* sql = "SELECT COALESCE(MAX(id) + 1, 1) AS new_id FROM records WHERE user_id = ?;";
+
+        if (sqlite3_prepare_v2(mainWindow->db, sql, -1, &stmt, nullptr) == SQLITE_OK) {
+            sqlite3_bind_int(stmt, 1, profileIdx+1);
+            if (sqlite3_step(stmt) == SQLITE_ROW) {
+                record_id = sqlite3_column_int(stmt, 0);
+            }
+        }
+        sqlite3_finalize(stmt);
+
+        // insert record into database for specific user
+
+        sqlite3_stmt* insert_record;
+        sql = "INSERT INTO records (id, user_id, date) VALUES (?, ?, ?);";
+
+        if (sqlite3_prepare_v2(mainWindow->db, sql, -1, &insert_record, nullptr) == SQLITE_OK) {
+            sqlite3_bind_int(insert_record, 1, record_id);
+            sqlite3_bind_int(insert_record, 2, profileIdx+1);
+            sqlite3_bind_text(insert_record, 3, record->getDate().toString("MM-dd HH:mm").toUtf8().constData(), -1, SQLITE_TRANSIENT);
+            sqlite3_step(insert_record);
+        }
+        sqlite3_finalize(insert_record);
+
+        // insert record values into database for specific user and record
+        sqlite3_stmt* insert_values;
+        sql = "INSERT INTO record_values (id, record_id, user_id, value) VALUES (?, ?, ?, ?);";
+
+        if (sqlite3_prepare_v2(mainWindow->db, sql, -1, &insert_values, nullptr) == SQLITE_OK) {
+            for (int i=0; i < READING_COUNT; i++) {
+                sqlite3_bind_int(insert_values, 1, i+1);
+                sqlite3_bind_int(insert_values, 2, record_id);
+                sqlite3_bind_int(insert_values, 3, profileIdx+1);
+                sqlite3_bind_int(insert_values, 4, readings[i]);
+                sqlite3_step(insert_values);
+                sqlite3_reset(insert_values);
+            }
+        }
+        sqlite3_finalize(insert_values);
+
         for (int i = 0; i < READING_COUNT; i++) {
             record->setRecordValue(i, readings[i]);
         }
