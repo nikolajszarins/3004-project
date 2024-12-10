@@ -6,7 +6,7 @@ Student Number: 101156178
 Breakdown of work: 
 - Worked on defining and refining Use Cases and adding extensions 
 - Requirements Traceability Matrix 
-- Classes Implementation (include specific classes at end)
+- Classes Implementation (`pagerecord.cpp`, `pagerecord.h`, `record.cpp`, `record.h`)
 - Planning & Recording tests video
 
 <br>
@@ -43,11 +43,12 @@ Breakdown of work:
 ## Organization of Submission:
 Project code and design documentation is in the folder `RadotechSim`. Kindly refer to the UML Class diagram in the design document to understand code structure.
 
-Design documentation is located in `RadotechSim/design_documentation`, this is where you will find the textual and graphical solution to the project that includes the following: 
+Design documentation is located in `design_documentation`, this is where you will find the textual and graphical solution to the project that includes the following: 
 
 - Use Cases
 - Use Cases diagram
 - UML Class diagram
+- Explanation of program design
 - UML Sequence diagrams
 - UML State Machine diagrams
 - Requirements Traceability Matrix
